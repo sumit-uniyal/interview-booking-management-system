@@ -19,7 +19,7 @@ const SearchMatrix: React.FC = () => {
 
   return (
     <div className="flex justify-center w-full mt-8 mb-12">
-      <div className="w-[50%] bg-white rounded-3xl shadow-2xl border border-gray-200 overflow-hidden">
+      <div className="w-[70%] bg-white rounded-3xl shadow-2xl border border-gray-200 overflow-hidden">
         <Tabs
           selectedKey={selectedKey}
           onSelectionChange={(key: any) => setSelectedKey(key as string)}
