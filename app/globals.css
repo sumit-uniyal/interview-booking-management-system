@@ -1,1 +1,54 @@
+/* globals.css */
 @import 'tailwindcss';
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Fix card overlay and spacing */
+.card-body {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Inputs spacing */
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+}
+
+/* Navbar fix */
+.navbar button {
+  transition: color 0.3s;
+}
+.navbar button:hover {
+  color: #3b82f6; /* Tailwind blue-500 */
+}
+.navbar button.active {
+  color: #2563eb; /* Tailwind blue-600 */
+}
+
+/* Categories overlay */
+.categories .card-body {
+  background-color: rgba(30, 64, 175, 0.8);
+  color: #fff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .card-body {
+    padding: 1rem;
+  }
+  .grid-cols-3 {
+    grid-template-columns: 1fr !important;
+    gap: 1rem;
+  }
+}
