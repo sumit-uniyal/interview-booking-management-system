@@ -1,0 +1,92 @@
+import React from 'react';
+import Link from 'next/link';
+import { FaFacebook, FaInstagram, FaYoutube, FaPhoneAlt } from 'react-icons/fa';
+
+export default function Footer() {
+  return (
+    <footer className="bg-gray-900 text-gray-300 py-16 mt-20">
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
+        {/* Logo + About */}
+        <div>
+          <h2 className="text-2xl font-bold text-white mb-4">
+            Shri Badrinath Ji
+          </h2>
+          <p className="text-sm leading-relaxed">
+            Authentic Vedic rituals, Bhagwat Katha, spiritual consultations,
+            online interviews, and personalized puja services performed with
+            devotion and purity.
+          </p>
+        </div>
+
+        {/* Quick Links */}
+        <div>
+          <h3 className="text-xl font-semibold text-white mb-3">Quick Links</h3>
+          <ul className="space-y-2">
+            <li>
+              <Link href="/" className="hover:text-white">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link href="/about" className="hover:text-white">
+                About Us
+              </Link>
+            </li>
+            <li>
+              <Link href="/blogs" className="hover:text-white">
+                Blogs
+              </Link>
+            </li>
+            <li>
+              <Link href="/contact" className="hover:text-white">
+                Contact Us
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        {/* Services */}
+        <div>
+          <h3 className="text-xl font-semibold text-white mb-3">Services</h3>
+          <ul className="space-y-2">
+            <li>Bhagwat Katha</li>
+            <li>Online Interview</li>
+            <li>Griha Pravesh Puja</li>
+            <li>Special Puja Requests</li>
+            <li>Horoscope Consultation</li>
+          </ul>
+        </div>
+
+        {/* Contact Info */}
+        <div>
+          <h3 className="text-xl font-semibold text-white mb-3">Contact</h3>
+          <ul className="space-y-2">
+            <li className="flex items-center gap-2">
+              <FaPhoneAlt size={16} /> +91 98765 43210
+            </li>
+            <li>Email: info@panditji.com</li>
+            <li>Badrinath Dham, Uttarakhand, India</li>
+          </ul>
+
+          {/* Social Icons */}
+          <div className="flex items-center gap-4 mt-4 text-xl">
+            <a href="#" className="hover:text-white">
+              <FaFacebook />
+            </a>
+            <a href="#" className="hover:text-white">
+              <FaInstagram />
+            </a>
+            <a href="#" className="hover:text-white">
+              <FaYoutube />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Copyright */}
+      <div className="text-center text-gray-400 text-sm mt-12 border-t border-gray-700 pt-6">
+        © {new Date().getFullYear()} Shri Badrinath Ji. All Rights Reserved.
+      </div>
+    </footer>
+  );
+}

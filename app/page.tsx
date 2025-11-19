@@ -1,28 +1,37 @@
 'use client';
 
-import Carousel from './components/carousel/Carousel';
-import HeroSection from './components/HeroSection';
-import SearchMatrix from './components/matrix/SearchMatrix';
+import React, { useState } from 'react';
+import Navbar from '@/app/components/ui/Navbar';
+import SearchMatrix from '@/app/components/matrix/SearchMatrix';
+import WhoWeAre from './components/WhoWeAre';
+import BlogSection from './components/BlogSection';
+import Footer from './components/ui/Footer';
 
-const Page = () => {
-  const bannerImages = ['/banner/1.jpg', '/banner/2.webp', '/banner/3.webp'];
+interface HomePageProps {}
+
+const HomePage: React.FC<HomePageProps> = () => {
+  const [tripType, setTripType] = useState<'hotel' | 'flight'>('hotel');
 
   return (
-    <div className="relative w-full ">
-      <Carousel images={bannerImages} />
+    <>
+      <div className="min-h-screen flex flex-col items-center">
+        <div
+          className="w-full bg-cover bg-center flex flex-col items-center p-6 pt-28 pb-20"
+          style={{ backgroundImage: 'url("/banner/bg.webp")' }}
+        >
+          <Navbar />
 
-      <div className="absolute inset-0 z-10 flex flex-col items-center  justify-center space-y-10 h-[70vh]">
-        <HeroSection
-          title="Plan Your Dream Trip"
-          subtitle="Discover luxury hotels, unique tours, and unforgettable experiences."
-        />
-
-        <div className="w-full flex justify-center">
           <SearchMatrix />
         </div>
+
+        <div className="w-full flex flex-col items-center gap-10 py-10 bg-gray-50">
+          <WhoWeAre />
+          <BlogSection />
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 
-export default Page;
+export default HomePage;

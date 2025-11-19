@@ -1,47 +1,102 @@
 'use client';
 
-import { useState } from 'react';
-import { Tabs, Tab } from '@heroui/react';
-import FlightSearchMatrix from './FlightSearchMatrix';
-import HotelSearchMatrix from './HotelSearchMatrix';
-import TourSearchMatrix from './TourSearchMatrix';
+import React from 'react';
+import { Card, CardBody, Button, Select, SelectItem } from '@heroui/react';
 
-const SearchMatrix: React.FC = () => {
-  const [selectedKey, setSelectedKey] = useState<string>('flights');
-
-  const tabConfig = [
-    { key: 'flights', title: '✈️ Flight', component: <FlightSearchMatrix /> },
-    { key: 'hotels', title: '🏨 Hotel', component: <HotelSearchMatrix /> },
-    { key: 'transfer', title: '🚗 Transfer', component: <TourSearchMatrix /> },
-  ];
-
-  const activeTab = tabConfig.find((t) => t.key === selectedKey);
-
+const SearchMatrix = () => {
   return (
-    <div className="flex justify-center w-full mt-8 mb-12">
-      <div className="w-[70%] bg-white rounded-3xl shadow-2xl border border-gray-200 overflow-hidden">
-        <Tabs
-          selectedKey={selectedKey}
-          onSelectionChange={(key: any) => setSelectedKey(key as string)}
-          fullWidth
-          variant="light"
-          className="w-full border-b border-gray-200"
-        >
-          {tabConfig.map((tab) => (
-            <Tab
-              key={tab.key}
-              title={tab.title}
-              className={`py-4 text-lg font-medium transition-all duration-200 border-b-4 ${
-                selectedKey === tab.key
-                  ? 'text-[#028768] font-semibold border-[#028768]'
-                  : 'text-gray-600 border-transparent hover:text-[#028768]'
-              }`}
+    <Card className="w-full max-w-4xl shadow-xl rounded-2xl p-8 bg-white">
+      <CardBody className="space-y-8">
+        <h2 className="text-3xl font-semibold text-gray-800">Search</h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* CATEGORY */}
+          <div className="flex flex-col gap-2">
+            <label className="text-sm font-semibold text-gray-700">
+              Select Category
+            </label>
+
+            <Select
+              placeholder="Choose a Category"
+              size="lg"
+              radius="lg"
+              className="rounded-xl"
+              classNames={{
+                trigger:
+                  'h-14 border border-gray-300 rounded-xl hover:border-gray-400 transition-all focus:ring-2 focus:ring-primary/40 bg-white',
+                value: 'text-gray-800 text-base',
+                listboxWrapper:
+                  'rounded-xl shadow-xl border border-gray-200 bg-white mt-2',
+                listbox: 'p-2 gap-1',
+                popoverContent: 'rounded-xl',
+              }}
+            >
+              <SelectItem
+                key="interview"
+                className="px-3 py-2 text-base rounded-lg hover:bg-gray-100 transition"
+              >
+                Online Interview
+              </SelectItem>
+
+              <SelectItem
+                key="bhagwat"
+                className="px-3 py-2 text-base rounded-lg hover:bg-gray-100 transition"
+              >
+                Bhagwat
+              </SelectItem>
+            </Select>
+          </div>
+
+          {/* START DATE */}
+          <div className="flex flex-col gap-2">
+            <label className="text-sm font-semibold text-gray-700">
+              Start Date
+            </label>
+
+            <input
+              type="date"
+              className="
+                h-14 px-4 w-full rounded-xl border border-gray-300 
+                text-gray-800 bg-white
+                hover:border-gray-400
+                focus:outline-none focus:ring-2 focus:ring-primary/40
+                transition-all
+              "
+              placeholder="Select start date"
             />
-          ))}
-        </Tabs>
-        <div className="p-8 bg-white">{activeTab?.component}</div>
-      </div>
-    </div>
+          </div>
+
+          {/* END DATE */}
+          <div className="flex flex-col gap-2">
+            <label className="text-sm font-semibold text-gray-700">
+              End Date
+            </label>
+
+            <input
+              type="date"
+              className="
+                h-14 px-4 w-full rounded-xl border border-gray-300 
+                text-gray-800 bg-white
+                hover:border-gray-400
+                focus:outline-none focus:ring-2 focus:ring-primary/40
+                transition-all
+              "
+              placeholder="Select end date"
+            />
+          </div>
+        </div>
+
+        <div className="flex justify-end">
+          <Button
+            color="primary"
+            size="lg"
+            className="px-10 py-6 text-lg rounded-xl shadow-md hover:shadow-lg transition-all"
+          >
+            Search
+          </Button>
+        </div>
+      </CardBody>
+    </Card>
   );
 };
 
