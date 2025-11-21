@@ -1,9 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import React from 'react';
 
-export default function BlogSection() {
+const BlogSection = () => {
   const blogs = [
     {
       id: 1,
@@ -35,54 +34,66 @@ export default function BlogSection() {
   ];
 
   return (
-    <section className="w-full max-w-7xl mx-auto py-20 px-6">
-      {/* Title */}
-      <h2 className="text-4xl font-bold text-gray-800 mb-14 text-center">
-        Latest From Our Blog
-      </h2>
-
-      {/* Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-        {blogs.map((blog) => (
-          <div
-            key={blog.id}
-            className="group rounded-2xl shadow-lg bg-white overflow-hidden hover:shadow-2xl transition-all duration-300 cursor-pointer"
-          >
-            {/* Blog Image */}
-            <div className="relative h-64 overflow-hidden">
-              <Image
-                src={blog.image}
-                alt={blog.title}
-                fill
-                className="object-cover transition-all duration-500 group-hover:scale-110"
-              />
-
-              {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/40"></div>
-
-              {/* Date Tag */}
-              <span className="absolute bottom-3 left-3 text-white text-sm bg-black/40 px-3 py-1 rounded-full backdrop-blur-sm">
-                {blog.date}
-              </span>
-            </div>
-
-            {/* Blog Content */}
-            <div className="p-6">
-              <h3 className="text-xl font-semibold text-gray-800 mb-2 group-hover:text-orange-600 transition">
-                {blog.title}
-              </h3>
-
-              <p className="text-gray-600 text-sm leading-relaxed">
-                {blog.description}
-              </p>
-
-              <button className="mt-4 text-orange-600 font-semibold hover:underline">
-                Read More →
-              </button>
-            </div>
+    <section className="w-full py-20 bg-linear-to-b from-white via-gray-50 to-gray-100">
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Premium Container */}
+        <div className="bg-white rounded-3xl shadow-2xl p-10 border border-gray-100">
+          {/* Header */}
+          <div className="flex flex-col items-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 text-center">
+              Latest From Our Blog
+            </h2>
+            <p className="mt-3 text-gray-600 text-center">
+              Insights, spiritual knowledge & important updates
+            </p>
           </div>
-        ))}
+
+          {/* Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+            {blogs.map((blog) => (
+              <div
+                key={blog.id}
+                className="group rounded-2xl shadow-lg bg-white overflow-hidden hover:shadow-2xl transition-all duration-300 cursor-pointer"
+              >
+                {/* Image */}
+                <div className="relative h-64 overflow-hidden">
+                  <Image
+                    src={blog.image}
+                    alt={blog.title}
+                    fill
+                    className="object-cover transition-all duration-500 group-hover:scale-110"
+                  />
+
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-linear-to-b from-transparent to-black/40" />
+
+                  {/* Date */}
+                  <span className="absolute bottom-3 left-3 text-white text-sm bg-black/40 px-3 py-1 rounded-full backdrop-blur-sm">
+                    {blog.date}
+                  </span>
+                </div>
+
+                {/* Content */}
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2 group-hover:text-orange-600 transition">
+                    {blog.title}
+                  </h3>
+
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    {blog.description}
+                  </p>
+
+                  <button className="mt-4 text-orange-600 font-semibold hover:underline">
+                    Read More →
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
-}
+};
+
+export default BlogSection;
