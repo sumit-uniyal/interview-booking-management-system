@@ -1,7 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
-import Navbar from '@/app/components/ui/Navbar';
+import { useEffect, useRef } from 'react';
 import SearchMatrix from '@/app/components/matrix/SearchMatrix';
 import WhoWeAre from './components/WhoWeAre';
 import BlogSection from './components/BlogSection';
@@ -19,6 +18,14 @@ export default function HomePage() {
     });
   };
 
+  useEffect(() => {
+    if (window.location.hash === '#booking') {
+      setTimeout(() => {
+        scrollToBooking();
+      }, 200);
+    }
+  }, []);
+
   const images = [
     { src: '/banner/1.jpg', alt: 'Img 1' },
     { src: '/banner/2.webp', alt: 'Img 2' },
@@ -30,11 +37,10 @@ export default function HomePage() {
 
   return (
     <>
-      <Navbar onSearchClick={scrollToBooking} />
       <SearchMatrix />
       <WhoWeAre />
 
-      <div ref={bookingRef}>
+      <div id="booking" ref={bookingRef}>
         <BookingSearch />
       </div>
 
