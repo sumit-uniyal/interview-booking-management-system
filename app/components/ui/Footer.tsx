@@ -1,4 +1,5 @@
-import React from 'react';
+'use client';
+
 import Link from 'next/link';
 import { FaFacebook, FaInstagram, FaYoutube, FaPhoneAlt } from 'react-icons/fa';
 
@@ -13,8 +14,8 @@ export default function Footer() {
           </h2>
           <p className="text-sm leading-relaxed">
             Authentic Vedic rituals, Bhagwat Katha, spiritual consultations,
-            online interviews, and personalized puja services performed with
-            devotion and purity.
+            online interviews, all activities performed with devotion and
+            purity.
           </p>
         </div>
 
@@ -28,12 +29,12 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/about" className="hover:text-white">
+              <Link href="/aboutus" className="hover:text-white">
                 About Us
               </Link>
             </li>
             <li>
-              <Link href="/blogs" className="hover:text-white">
+              <Link href="/blog" className="hover:text-white">
                 Blogs
               </Link>
             </li>
@@ -51,13 +52,9 @@ export default function Footer() {
           <ul className="space-y-2">
             <li>Bhagwat Katha</li>
             <li>Online Interview</li>
-            <li>Griha Pravesh Puja</li>
-            <li>Special Puja Requests</li>
-            <li>Horoscope Consultation</li>
           </ul>
         </div>
 
-        {/* Contact Info */}
         <div>
           <h3 className="text-xl font-semibold text-white mb-3">Contact</h3>
           <ul className="space-y-2">
@@ -68,7 +65,6 @@ export default function Footer() {
             <li>Badrinath Dham, Uttarakhand, India</li>
           </ul>
 
-          {/* Social Icons */}
           <div className="flex items-center gap-4 mt-4 text-xl">
             <a href="#" className="hover:text-white">
               <FaFacebook />
@@ -83,7 +79,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Copyright */}
       <div className="text-center text-gray-400 text-sm mt-12 border-t border-gray-700 pt-6">
         © {new Date().getFullYear()} Shri Badrinath Ji. All Rights Reserved.
       </div>

@@ -1,13 +1,13 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { savebooking } from '../actions/bookingServerAction';
 
-type FormValues = {
+interface FormValues {
   firstname: string;
   lastname: string;
   email: string;
@@ -20,15 +20,27 @@ type FormValues = {
   enddate: string;
   interviewtime: string;
   duration: string;
-};
+}
 
 export default function ReservationPage() {
-  const search = useSearchParams();
-  const category = search.get('category');
-  const startdateParam = search.get('startdate') || '';
-  const enddateParam = search.get('enddate') || '';
-  const durationParam = search.get('duration') || '';
-  const timeParam = search.get('time') || '';
+  const router = useRouter();
+
+  // --- STATE TO STORE URL PARAMETERS ---
+  const [category, setCategory] = useState<string | null>(null);
+  const [startdateParam, setStartdateParam] = useState('');
+  const [enddateParam, setEnddateParam] = useState('');
+  const [durationParam, setDurationParam] = useState('');
+  const [timeParam, setTimeParam] = useState('');
+
+  // READ SEARCH PARAMS INSIDE USEEFFECT
+  useEffect(() => {
+    const search = new URLSearchParams(window.location.search);
+    setCategory(search.get('category'));
+    setStartdateParam(search.get('startdate') || '');
+    setEnddateParam(search.get('enddate') || '');
+    setDurationParam(search.get('duration') || '');
+    setTimeParam(search.get('time') || '');
+  }, []);
 
   const {
     register,
@@ -52,6 +64,7 @@ export default function ReservationPage() {
     },
   });
 
+  // UPDATE FORM VALUES WHEN URL PARAMS CHANGE
   useEffect(() => {
     setValue('type', category);
     setValue('onlineinterview', category === 'interview');
@@ -73,6 +86,9 @@ export default function ReservationPage() {
       const res = await savebooking(data);
       if (res.success) {
         toast.success('Booking Created Successfully');
+        setTimeout(() => {
+          router.push('/');
+        }, 2000);
       }
     } catch (error) {
       toast.error('Failed to create booking');
@@ -82,7 +98,6 @@ export default function ReservationPage() {
   return (
     <div className="min-h-screen bg-gray-100 pt-28 pb-10">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 px-6">
-        {/* LEFT IMAGE CARD */}
         <div className="bg-white shadow-lg rounded-2xl overflow-hidden">
           <div className="relative w-full h-full min-h-[600px]">
             <Image
@@ -306,7 +321,7 @@ export default function ReservationPage() {
           </button>
 
           <p className="text-center text-gray-400 text-sm">
-            You can edit personal details later. Auto-filled fields are locked.
+            Have an unforgettable experience with us!
           </p>
         </form>
       </div>

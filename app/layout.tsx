@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 import './globals.css';
 import Navbar from './components/ui/Navbar';
 import ToastProvider from './components/toaster/ToastProvider';
+import Footer from './components/ui/Footer';
 
-const inter = Inter({ subsets: ['latin'] });
+const poppins = Poppins({ subsets: ['latin'], weight: ['400', '600', '700'] });
 
 export const metadata: Metadata = {
   title: 'TravelEase - Your Perfect Travel Companion',
@@ -19,10 +20,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={poppins.className}>
         <ToastProvider />
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

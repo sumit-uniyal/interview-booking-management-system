@@ -4,7 +4,6 @@ import { useEffect, useRef } from 'react';
 import SearchMatrix from '@/app/components/matrix/SearchMatrix';
 import WhoWeAre from './components/WhoWeAre';
 import BlogSection from './components/BlogSection';
-import Footer from './components/ui/Footer';
 import ImageGallery from './components/gallery/ImageGallery';
 import BookingSearch from './components/matrix/BookingSearch';
 
@@ -50,7 +49,6 @@ export default function HomePage() {
         position="left"
         description="Experience moments captured during events, kathas, cultures and rituals."
       />
-      <Footer />
     </>
   );
 }

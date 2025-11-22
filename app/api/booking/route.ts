@@ -1,3 +1,5 @@
+'use server';
+
 import connectdb from '@/lib/db';
 import Reservation from '@/models/Reservation';
 import { NextRequest, NextResponse } from 'next/server';
@@ -45,8 +47,8 @@ export async function POST(req: NextRequest) {
       description,
       type,
       onlineinterview,
-      startdate,
-      enddate,
+      startdate: startdate.toString(),
+      enddate: enddate?.toString(),
       interviewtime,
       duration,
       reservationid: newReservationId,

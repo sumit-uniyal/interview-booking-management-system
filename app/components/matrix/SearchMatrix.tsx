@@ -37,7 +37,7 @@ const SearchMatrix = () => {
 
         router.push(`/reservation${queryString ? `?${queryString}` : ''}`);
       } else {
-        toast.error('Schedule is not available for this time');
+        toast.error('Not available for this time');
       }
     } catch (error) {
       toast.error('Something went wrong');
