@@ -10,8 +10,8 @@ export interface IReservation extends Document {
   description?: string;
   type: string;
   onlineinterview: boolean;
-  startdate: Date;
-  enddate?: Date;
+  startdate: String;
+  enddate?: String;
   duration?: string;
   interviewtime?: string;
   status: 'pending' | 'accepted' | 'rejected';
@@ -60,11 +60,11 @@ const ReservationSchema = new Schema<IReservation>(
       required: true,
     },
     startdate: {
-      type: Date,
+      type: String,
       required: true,
     },
     enddate: {
-      type: Date,
+      type: String,
     },
     duration: {
       type: String,

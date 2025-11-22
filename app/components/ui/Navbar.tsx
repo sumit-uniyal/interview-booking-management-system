@@ -46,11 +46,17 @@ const Navbar = () => {
               About Us
             </a>
 
-            <a className="text-gray-700 font-medium text-lg hover:text-blue-600 transition-all cursor-pointer">
+            <a
+              onClick={() => router.push('/blog')}
+              className="text-gray-700 font-medium text-lg hover:text-blue-600 transition-all cursor-pointer"
+            >
               Blogs
             </a>
 
-            <a className="text-gray-700 font-medium text-lg hover:text-blue-600 transition-all cursor-pointer">
+            <a
+              onClick={() => router.push('/contact')}
+              className="text-gray-700 font-medium text-lg hover:text-blue-600 transition-all cursor-pointer"
+            >
               Contact Us
             </a>
 
