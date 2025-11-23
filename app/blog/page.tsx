@@ -2,29 +2,34 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const BlogPage = () => {
-  // Sample blog posts
+  // Blog posts with ID
   const blogPosts = [
     {
+      id: 1,
       title: 'Top 10 Destinations to Visit in 2025',
       desc: 'Explore the most breathtaking locations for your next adventure and plan your perfect itinerary with ease.',
       img: 'https://images.pexels.com/photos/346885/pexels-photo-346885.jpeg',
       date: 'Nov 15, 2025',
     },
     {
+      id: 2,
       title: 'How to Travel on a Budget',
       desc: 'Discover smart tips to save money while traveling without compromising on comfort or experience.',
       img: 'https://images.pexels.com/photos/346885/pexels-photo-346885.jpeg',
       date: 'Nov 10, 2025',
     },
     {
+      id: 3,
       title: 'The Ultimate Guide to Solo Travel',
       desc: 'Learn how to make the most of your solo trips with safety tips, planning hacks, and inspiration.',
       img: 'https://images.pexels.com/photos/346885/pexels-photo-346885.jpeg',
       date: 'Nov 5, 2025',
     },
     {
+      id: 4,
       title: 'The Ultimate Guide to Solo Travel',
       desc: 'Learn how to make the most of your solo trips with safety tips, planning hacks, and inspiration.',
       img: 'https://images.pexels.com/photos/346885/pexels-photo-346885.jpeg',
@@ -65,32 +70,33 @@ const BlogPage = () => {
         </motion.div>
       </section>
 
-      {/* Blog Posts */}
+      {/* Blog Cards */}
       <section className="max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-3 gap-10">
-        {blogPosts.map((post, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="rounded-2xl shadow-lg bg-white overflow-hidden flex flex-col"
-          >
-            <div className="relative h-56 w-full">
-              <Image
-                src={post.img}
-                alt={post.title}
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="p-6 flex flex-col flex-1">
-              <h3 className="text-xl font-semibold mb-2 text-gray-900">
-                {post.title}
-              </h3>
-              <p className="text-gray-600 mb-4 flex-1">{post.desc}</p>
-              <p className="text-sm text-gray-400 mt-auto">{post.date}</p>
-            </div>
-          </motion.div>
+        {blogPosts.map((post) => (
+          <Link href={`/blog/${post.id}`} key={post.id}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="rounded-2xl shadow-lg bg-white overflow-hidden hover:shadow-2xl transition-all cursor-pointer"
+            >
+              <div className="relative h-56 w-full">
+                <Image
+                  src={post.img}
+                  alt={post.title}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold mb-2 text-gray-900">
+                  {post.title}
+                </h3>
+                <p className="text-gray-600 mb-4">{post.desc}</p>
+                <p className="text-sm text-gray-400">{post.date}</p>
+              </div>
+            </motion.div>
+          </Link>
         ))}
       </section>
     </div>
