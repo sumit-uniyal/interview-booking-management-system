@@ -39,7 +39,7 @@ const BlogSection = () => {
               Latest From Our Blog
             </h2>
             <p className="mt-3 text-gray-600 text-center">
-              Insights, spiritual knowledge & important updates
+              Divine Moments on Instagram (Spiritual tone)
             </p>
           </div>
 

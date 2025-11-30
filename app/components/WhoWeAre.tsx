@@ -12,7 +12,7 @@ const WhoWeAre = () => {
             {/* Image Section */}
             <div className="rounded-3xl overflow-hidden shadow-lg h-[280px] sm:h-[350px]">
               <Image
-                src="/image/homeabout.jpeg"
+                src="/image/homeabout1.jpg"
                 alt="Pandit Ji"
                 width={700}
                 height={500}
@@ -25,17 +25,19 @@ const WhoWeAre = () => {
               <h2 className="text-4xl font-bold text-gray-900">Who We Are</h2>
 
               <p className="text-gray-600 leading-relaxed text-lg">
-                We provide authentic Vedic services including Bhagwat Katha,
-                online interviews, spiritual consultations, and personalized
-                puja bookings. With years of experience in scriptures and
-                rituals, Pandit Ji ensures every ceremony is performed with
-                devotion and purity.
+                We offer authentic spiritual services centered around Bhagwat
+                Katha and online spiritual interviews. With deep knowledge of
+                Vedic scriptures and storytelling tradition, Pandit Ji delivers
+                meaningful Kathas that inspire devotion, peace, and
+                understanding of Sanatan Dharma.
               </p>
 
               <p className="text-gray-600 leading-relaxed text-lg">
-                Our mission is to connect devotees with meaningful spiritual
-                guidance— making it easier for families to perform traditional
-                ceremonies with trust, devotion, and convenience.
+                Our mission is to make spiritual guidance accessible and
+                convenient for every devotee—helping families experience the
+                essence of Bhagwat Katha and seek personal guidance through
+                online one-to-one sessions filled with purity, trust, and
+                devotion.
               </p>
             </div>
           </div>

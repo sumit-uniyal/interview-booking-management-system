@@ -9,9 +9,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
         {/* Logo + About */}
         <div>
-          <h2 className="text-2xl font-bold text-white mb-4">
-            Shri Badrinath Ji
-          </h2>
+          <h2 className="text-2xl font-bold text-white mb-4">SanatanConnect</h2>
           <p className="text-sm leading-relaxed">
             Authentic Vedic rituals, Bhagwat Katha, spiritual consultations,
             online interviews, all activities performed with devotion and
@@ -59,17 +57,19 @@ export default function Footer() {
           <h3 className="text-xl font-semibold text-white mb-3">Contact</h3>
           <ul className="space-y-2">
             <li className="flex items-center gap-2">
-              <FaPhoneAlt size={16} /> +91 98765 43210
+              <FaPhoneAlt size={16} /> +91 7895860469
             </li>
-            <li>Email: info@panditji.com</li>
-            <li>Badrinath Dham, Uttarakhand, India</li>
+            <li>Email: suniyal141@gmail.com</li>
           </ul>
 
           <div className="flex items-center gap-4 mt-4 text-xl">
             <a href="#" className="hover:text-white">
               <FaFacebook />
             </a>
-            <a href="#" className="hover:text-white">
+            <a
+              href="https://www.instagram.com/one_step_towards_godliness?igsh=MTRuYzEya3puY2t3ag=="
+              className="hover:text-white"
+            >
               <FaInstagram />
             </a>
             <a href="#" className="hover:text-white">
@@ -77,10 +77,6 @@ export default function Footer() {
             </a>
           </div>
         </div>
-      </div>
-
-      <div className="text-center text-gray-400 text-sm mt-12 border-t border-gray-700 pt-6">
-        © {new Date().getFullYear()} Shri Badrinath Ji. All Rights Reserved.
       </div>
     </footer>
   );
