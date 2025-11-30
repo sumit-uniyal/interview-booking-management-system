@@ -2,13 +2,14 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { FaEnvelope, FaInstagram, FaPhone } from 'react-icons/fa';
 
 const AboutUs = () => {
   return (
     <div>
       <section className="relative w-full h-[60vh]">
         <Image
-          src="https://images.pexels.com/photos/3860091/pexels-photo-3860091.jpeg"
+          src="/image/abtbg.jpg"
           alt="About hero"
           fill
           className="object-cover brightness-50"
@@ -29,10 +30,10 @@ const AboutUs = () => {
         >
           <h2 className="text-3xl font-bold mb-6 text-gray-900">Who We Are</h2>
           <p className="text-gray-600 text-lg leading-relaxed">
-            We are a modern travel platform built to simplify every aspect of
-            your journey. From booking your flights to planning personalized
-            tour experiences, our mission is to deliver seamless travel
-            solutions backed by innovation and expertise.
+            We are a modern spiritual platform designed to bring devotion closer
+            to every home. From booking a Bhagwat Katha to connecting with
+            Pandit Ji through online spiritual interviews, our mission is to
+            offer seamless, authentic guidance backed by tradition and trust.
           </p>
         </motion.div>
       </section>
@@ -49,8 +50,9 @@ const AboutUs = () => {
               Our Mission
             </h3>
             <p className="text-gray-600 text-lg">
-              To redefine travel by blending technology, trust, and transparent
-              pricing — helping people travel smoothly across the world.
+              To bring devotion closer by blending tradition, trust, and
+              accessibility — helping every devotee connect with authentic
+              spiritual guidance wherever they are.
             </p>
           </motion.div>
 
@@ -73,22 +75,23 @@ const AboutUs = () => {
       {/* Values */}
       <section className="max-w-6xl mx-auto px-6 py-20">
         <h3 className="text-2xl font-bold mb-10 text-gray-900 text-center">
-          Our Values
+          Contact Us
         </h3>
 
         <div className="grid md:grid-cols-3 gap-10">
           {[
             {
-              title: 'Trust & Reliability',
-              desc: 'Secure bookings and honest pricing with no hidden surprises.',
+              title: 'Call Us',
+              phone: '+91 7895860469',
             },
             {
-              title: 'Customer First',
-              desc: 'Support available whenever you need us, wherever you go.',
+              title: 'Email Us',
+              email: 'suniyal141@gmail.com',
             },
             {
-              title: 'Innovation',
-              desc: 'Smart tools and features that make travel planning effortless.',
+              title: 'Follow on Instagram',
+              instaLinks:
+                'https://www.instagram.com/one_step_towards_godliness?igsh=MTRuYzEya3puY2t3ag==',
             },
           ].map((item, i) => (
             <motion.div
@@ -96,12 +99,42 @@ const AboutUs = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="p-8 shadow-lg rounded-2xl bg-white"
+              className="p-8 shadow-lg rounded-2xl bg-white text-center"
             >
-              <h4 className="text-xl font-semibold mb-3 text-gray-900">
+              <h4 className="text-xl font-semibold mb-4 text-gray-900">
                 {item.title}
               </h4>
-              <p className="text-gray-600">{item.desc}</p>
+
+              {/* Phone Card */}
+              {item.phone && (
+                <div className="flex flex-col items-center gap-2 text-gray-700">
+                  <FaPhone className="text-2xl text-blue-600" />
+                  <p>{item.phone}</p>
+                </div>
+              )}
+
+              {/* Email Card */}
+              {item.email && (
+                <div className="flex flex-col items-center gap-2 text-gray-700">
+                  <FaEnvelope className="text-2xl text-green-600" />
+                  <p>{item.email}</p>
+                </div>
+              )}
+
+              {/* Instagram Links */}
+              {item.instaLinks && (
+                <div className="flex justify-center gap-5 mt-4">
+                  <a
+                    key={item.instaLinks}
+                    href={item.instaLinks}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-pink-600 text-2xl hover:scale-110 transition"
+                  >
+                    <FaInstagram />
+                  </a>
+                </div>
+              )}
             </motion.div>
           ))}
         </div>

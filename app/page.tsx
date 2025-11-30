@@ -45,9 +45,10 @@ export default function HomePage() {
 
       <BlogSection />
       <ImageGallery
+        title="Bhakti & Katha Glimpses"
         images={images}
         position="left"
-        description="Experience moments captured during events, kathas, cultures and rituals."
+        description="Experience the purity of devotion through photos from our Bhagwat Katha sessions, satsangs, and spiritual journeys. Every image carries the essence of Sanatan Dharma."
       />
     </>
   );

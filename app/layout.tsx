@@ -8,9 +8,12 @@ import Footer from './components/ui/Footer';
 const poppins = Poppins({ subsets: ['latin'], weight: ['400', '600', '700'] });
 
 export const metadata: Metadata = {
-  title: 'TravelEase - Your Perfect Travel Companion',
+  title: 'Sanatan Connect',
   description:
-    'Discover amazing destinations, book hotels, flights, and tours with ease.',
+    'A spiritual platform to explore Sanatan Dharma, divine knowledge, Vedic teachings, temples, rituals, and devotion. Stay connected with spirituality and ancient wisdom.',
+  icons: {
+    icon: '/image/om.jpg',
+  },
 };
 
 export default function RootLayout({
