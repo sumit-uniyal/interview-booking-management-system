@@ -80,7 +80,6 @@ export async function POST(req: NextRequest) {
       data: reservations,
     });
   } catch (error: any) {
-    console.error(error);
     return NextResponse.json(
       { success: false, error: error.message },
       { status: 500 }
