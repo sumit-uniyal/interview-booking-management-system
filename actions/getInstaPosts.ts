@@ -1,4 +1,4 @@
-'use client';
+'use server';
 
 import axios from 'axios';
 
@@ -9,7 +9,7 @@ export const getInstagramBussinessID = async () => {
     );
     return response.data.instagram_business_account.id;
   } catch (error) {
-    console.error('Error fetching IG Business ID', error);
+    return 'Error fetching IG Business ID' + error;
   }
 };
 

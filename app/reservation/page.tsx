@@ -5,7 +5,8 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-import { savebooking } from '../actions/bookingServerAction';
+import { savebooking } from '../../actions/bookingServerAction';
+import { Button } from '@heroui/react';
 
 interface FormValues {
   firstname: string;
@@ -25,14 +26,13 @@ interface FormValues {
 export default function ReservationPage() {
   const router = useRouter();
 
-  // --- STATE TO STORE URL PARAMETERS ---
+  const [btnLoader, setBtnLoader] = useState(false);
   const [category, setCategory] = useState<string | null>(null);
   const [startdateParam, setStartdateParam] = useState('');
   const [enddateParam, setEnddateParam] = useState('');
   const [durationParam, setDurationParam] = useState('');
   const [timeParam, setTimeParam] = useState('');
 
-  // READ SEARCH PARAMS INSIDE USEEFFECT
   useEffect(() => {
     const search = new URLSearchParams(window.location.search);
     setCategory(search.get('category'));
@@ -64,7 +64,6 @@ export default function ReservationPage() {
     },
   });
 
-  // UPDATE FORM VALUES WHEN URL PARAMS CHANGE
   useEffect(() => {
     setValue('type', category);
     setValue('onlineinterview', category === 'interview');
@@ -83,6 +82,7 @@ export default function ReservationPage() {
 
   const onSubmit = async (data: FormValues) => {
     try {
+      setBtnLoader(true);
       const res = await savebooking(data);
       if (res.success) {
         toast.success('Booking Created Successfully');
@@ -92,6 +92,8 @@ export default function ReservationPage() {
       }
     } catch (error) {
       toast.error('Failed to create booking');
+    } finally {
+      setBtnLoader(false);
     }
   };
 
@@ -101,7 +103,7 @@ export default function ReservationPage() {
         <div className="bg-white shadow-lg rounded-2xl overflow-hidden">
           <div className="relative w-full h-full min-h-[600px]">
             <Image
-              src="/banner/reservation.png"
+              src="/banner/reservatiobanner.jpg"
               alt="Reservation Banner"
               fill
               className="object-cover object-center"
@@ -313,12 +315,37 @@ export default function ReservationPage() {
             <p className="text-green-600 font-semibold">Available</p>
           </div>
 
-          <button
+          <Button
             type="submit"
-            className="w-full bg-red-500 hover:bg-red-600 text-white p-3 rounded-xl text-lg"
+            disabled={btnLoader}
+            className={`w-full flex items-center justify-center gap-2 bg-red-500 hover:bg-red-600 text-white p-3 rounded-xl text-lg ${
+              btnLoader ? 'cursor-not-allowed opacity-70' : ''
+            }`}
           >
-            Confirm Reservation
-          </button>
+            {btnLoader && (
+              <svg
+                className="animate-spin h-5 w-5 text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8v8H4z"
+                ></path>
+              </svg>
+            )}
+            {btnLoader ? 'Processing...' : 'Confirm Reservation'}
+          </Button>
 
           <p className="text-center text-gray-400 text-sm">
             Have an unforgettable experience with us!

@@ -4,7 +4,7 @@ import { Card, CardBody, Button, Select, SelectItem } from '@heroui/react';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-import { checkAvailability } from '@/app/actions/bookingServerAction';
+import { checkAvailability } from '@/actions/bookingServerAction';
 import { useRouter } from 'next/navigation';
 
 const SearchMatrix = () => {

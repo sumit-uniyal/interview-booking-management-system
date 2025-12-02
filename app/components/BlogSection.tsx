@@ -5,7 +5,7 @@ import Blog from './blog/Blog';
 import {
   getInstagramBussinessID,
   getInstaPost,
-} from '../actions/getInstaPosts';
+} from '../../actions/getInstaPosts';
 
 const BlogSection = () => {
   const [igID, setIgID] = useState('');
