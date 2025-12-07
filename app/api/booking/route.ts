@@ -1,8 +1,9 @@
 'use server';
 
-import sendMail from '@/actions/sendMail';
+import sendMail from '@/app/actions/sendMail';
 import connectdb from '@/lib/db';
 import Reservation from '@/models/Reservation';
+import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(req: NextRequest) {
@@ -78,7 +79,21 @@ export async function POST(req: NextRequest) {
       to,
     });
 
-    return NextResponse.json({ success: true }, { status: 200 });
+    const response = NextResponse.json(
+      { success: true, data: save },
+      { status: 200 }
+    );
+
+    response.cookies.set({
+      name: 'bookingData',
+      value: JSON.stringify(save),
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      path: '/',
+      maxAge: 60 * 10,
+    });
+
+    return response;
   } catch (error: any) {
     return NextResponse.json(
       { success: false, error: error.message },

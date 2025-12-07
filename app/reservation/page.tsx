@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-import { savebooking } from '../../actions/bookingServerAction';
+import { savebooking } from '../actions/bookingServerAction';
 import { Button } from '@heroui/react';
 
 interface FormValues {
@@ -83,12 +83,14 @@ export default function ReservationPage() {
   const onSubmit = async (data: FormValues) => {
     try {
       setBtnLoader(true);
+      // const res = await savebooking(data);
+
       const res = await savebooking(data);
+      console.log(res);
       if (res.success) {
-        toast.success('Booking Created Successfully');
         setTimeout(() => {
-          router.push('/');
-        }, 2000);
+          router.push('/checkout');
+        }, 1000);
       }
     } catch (error) {
       toast.error('Failed to create booking');
@@ -344,7 +346,7 @@ export default function ReservationPage() {
                 ></path>
               </svg>
             )}
-            {btnLoader ? 'Processing...' : 'Confirm Reservation'}
+            {btnLoader ? 'Processing...' : 'Proceed to Payment'}
           </Button>
 
           <p className="text-center text-gray-400 text-sm">

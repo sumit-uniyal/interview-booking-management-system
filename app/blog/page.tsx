@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import {
   getInstagramBussinessID,
   getInstaPost,
-} from '../../actions/getInstaPosts';
+} from '../actions/getInstaPosts';
 
 const BlogPage = () => {
   const [igID, setIgID] = useState('');
