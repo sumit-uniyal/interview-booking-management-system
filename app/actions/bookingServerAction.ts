@@ -1,4 +1,4 @@
-'use server';
+'use client';
 
 import axios from 'axios';
 
@@ -19,7 +19,7 @@ export const checkAvailability = async (data: any) => {
 export const savebooking = async (data: any) => {
   try {
     const baseUrl = process.env.NEXT_PUBLIC_APP_URL;
-    const res = await axios.post(`${baseUrl}/api/booking`, data);
+    const res = await axios.post(`${baseUrl}/api/savebooking`, data);
 
     return res.data;
   } catch (err: any) {
