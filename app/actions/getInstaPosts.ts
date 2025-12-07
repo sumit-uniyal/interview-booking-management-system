@@ -10,7 +10,7 @@ export const getInstagramBussinessID = async () => {
       return redisData;
     }
     const response = await axios.get(
-      `${process.env.NEXT_PUBLIC_FACEBOOK_GRAPH}${process.env.NEXT_PUBLIC_INSTA_PAGE_ID}?fields=instagram_business_account&access_token=${process.env.NEXT_PUBLIC_FB_ACCESS_TOKEN}`
+      `${process.env.NEXT_PUBLIC_FACEBOOK_GRAPH}${process.env.NEXT_PUBLIC_INSTA_PAGE_ID}?fields=instagram_business_account&access_token=${process.env.FB_ACCESS_TOKEN}`
     );
     await redis.set('igID', response.data.instagram_business_account.id);
 
@@ -30,7 +30,7 @@ export const getInstaPost = async (igID: any, limit?: number) => {
     const addLimit = limit ? `&limit=${limit}` : '';
 
     const response = await axios.get(
-      `${process.env.NEXT_PUBLIC_FACEBOOK_GRAPH}${igID}/media?fields=id,caption,media_type,media_url,thumbnail_url,timestamp,permalink,like_count,comments_count${addLimit}&access_token=${process.env.NEXT_PUBLIC_FB_ACCESS_TOKEN}`
+      `${process.env.NEXT_PUBLIC_FACEBOOK_GRAPH}${igID}/media?fields=id,caption,media_type,media_url,thumbnail_url,timestamp,permalink,like_count,comments_count${addLimit}&access_token=${process.env.FB_ACCESS_TOKEN}`
     );
     const posts = response.data.data;
     await redis.set(cacheKey, JSON.stringify(posts));
